@@ -14,8 +14,7 @@ class ApplicationController < Sinatra::Base
     200
   end
 
-  # method "URL" do
-    
-  # end
-
+  get "/teachers" do
+    Teacher.first.to_json(include: [{students: {include: {studentgoals: {methods: [:goal_title]}}}}, :goals]) 
+  end
 end

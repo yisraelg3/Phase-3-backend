@@ -1,5 +1,13 @@
 Create migration: Teachers table
+
+
+
+
 Create migration: Students table
+
+
+
+
 Create migration: Studentgoals table
 Create migration: Goals table
 
