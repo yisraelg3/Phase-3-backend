@@ -22,12 +22,19 @@ class ApplicationController < Sinatra::Base
     new_student = Student.create(name: params[:name], grade: params[:grade], hair_color: params[:hair_color],
        siblings_amount: params[:siblings_amount], teacher_id: params[:teacher_id])
        
-    new_student.to_json
+    new_student.to_json({include: {studentgoals: {methods: [:goal_title]}}})
   end
 
   post '/goals' do
     new_goal = Goal.create(title: params[:title], description: params[:description], teacher_id: params[:teacher_id])
 
     new_goal.to_json
+  end
+
+  post '/studentgoals' do
+    new_sudent_goal = Studentgoal.create(student_id: params[:student_id], goal_id: params[:goal_id], 
+      star: params[:star], completed: params[:completed])
+
+    new_sudent_goal.to_json
   end
 end
