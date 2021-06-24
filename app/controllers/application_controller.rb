@@ -30,4 +30,10 @@ class ApplicationController < Sinatra::Base
 
     new_goal.to_json
   end
+
+  patch '/star' do
+    # binding.pry
+    new_star = addStar(params[:id])
+    new_star.to_json
+  end
 end

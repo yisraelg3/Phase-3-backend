@@ -5,4 +5,10 @@ class Studentgoal < ActiveRecord::Base
     def goal_title
       self.goal.title
     end
+
+    def self.addStar(id)
+      studentgoal=self.all.find(id)
+      studentgoal.update(star: studentgoal.star+1)
+      studentgoal
+    end
   end
