@@ -48,7 +48,6 @@ class ApplicationController < Sinatra::Base
     # binding.pry
     student_goal = Studentgoal.find(params[:id])
     student_goal.destroy
-
     student_goal.to_json
   end
 end
