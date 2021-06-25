@@ -43,4 +43,12 @@ class ApplicationController < Sinatra::Base
     new_star = Studentgoal.addStar(params[:id])
     new_star.to_json
   end
+
+  delete "/studentgoals/:id" do 
+    # binding.pry
+    student_goal = Studentgoal.find(params[:id])
+    student_goal.destroy
+
+    student_goal.to_json
+  end
 end
