@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_23_072041) do
+ActiveRecord::Schema.define(version: 2021_06_25_151800) do
 
   create_table "goals", force: :cascade do |t|
     t.string "title"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2021_06_23_072041) do
     t.integer "goal_id"
     t.integer "star"
     t.boolean "completed"
+    t.integer "stars_to_complete"
   end
 
   create_table "students", force: :cascade do |t|

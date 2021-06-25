@@ -14,8 +14,13 @@ class ApplicationController < Sinatra::Base
     200
   end
 
-  get "/teachers" do
-    Teacher.first.to_json(include: [{students: {include: {studentgoals: {methods: [:goal_title]}}}}, :goals]) 
+  post "/login" do
+    teacher = Teacher.find_by(name: params[:username])
+    if teacher
+      teacher.to_json(include: [{students: {include: {studentgoals: {methods: [:goal_title]}}}}, :goals]) 
+    else
+      return {error: "Wrong Username"}.to_json
+    end
   end
 
   post '/students' do
@@ -33,7 +38,7 @@ class ApplicationController < Sinatra::Base
 
   post '/studentgoals' do
     new_sudent_goal = Studentgoal.create(student_id: params[:student_id], goal_id: params[:goal_id], 
-      star: params[:star], completed: params[:completed])
+      star: params[:star], completed: params[:completed], stars_to_complete: params[:stars_to_complete])
 
     new_sudent_goal.to_json
   end

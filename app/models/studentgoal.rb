@@ -8,9 +8,9 @@ class Studentgoal < ActiveRecord::Base
 
     def self.addStar(id)
       studentgoal=self.all.find(id)
-      if studentgoal.star == 9
-        studentgoal.update(star: studentgoal.star+1,completed: true)
-      else
+      if studentgoal.star == studentgoal.stars_to_complete - 1 && studentgoal.completed == false
+        studentgoal.update(star: studentgoal.star + 1, completed: true)
+      elsif studentgoal.completed == false
         studentgoal.update(star: studentgoal.star+1)
       end
       studentgoal
